@@ -1,0 +1,80 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-paper: #faf8f4;
+  --color-paper-raised: #ffffff;
+  --color-ink: #17141f;
+  --color-ink-soft: #5d5768;
+  --color-line: #e6e1d8;
+
+  --color-brand-50: #eeecff;
+  --color-brand-100: #ded9ff;
+  --color-brand-300: #a79cff;
+  --color-brand-500: #6c5ce7;
+  --color-brand-600: #5a48db;
+  --color-brand-700: #4736b0;
+
+  --color-free-bg: #ffffff;
+  --color-free-line: #ddd7ca;
+
+  --color-held-bg: #fff3d6;
+  --color-held-line: #f0c65a;
+  --color-held-ink: #8a5a06;
+
+  --color-sold-bg: #dcf5e6;
+  --color-sold-line: #63c98c;
+  --color-sold-ink: #14663c;
+
+  --radius-card: 1rem;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background:
+    radial-gradient(120% 60% at 50% -10%, var(--color-brand-50) 0%, transparent 60%),
+    var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+}
+
+/* Borde troquelado de boleta */
+.ticket-edge {
+  --dot: 10px;
+  position: relative;
+}
+.ticket-edge::before,
+.ticket-edge::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 9999px;
+  background: var(--color-paper);
+  transform: translateY(-50%);
+}
+.ticket-edge::before {
+  left: calc(var(--dot) / -2);
+}
+.ticket-edge::after {
+  right: calc(var(--dot) / -2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
